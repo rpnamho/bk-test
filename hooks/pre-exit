@@ -63,7 +63,7 @@ upload() {
     "--form" "run_env[commit_sha]=$BUILDKITE_COMMIT"
     "--form" "run_env[number]=$BUILDKITE_BUILD_NUMBER"
     "--form" "run_env[job_id]=$BUILDKITE_JOB_ID"
-    "--form" "run_env[message]=$MESSAGE"
+    "--form" "run_env[message]=HARDCODED"
     "--form" "run_env[collector]=test-collector-buildkite-plugin"
   )
 
