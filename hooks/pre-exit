@@ -6,6 +6,7 @@ FORMAT="${BUILDKITE_PLUGIN_TEST_COLLECTOR_FORMAT:-}"
 TIMEOUT="${BUILDKITE_PLUGIN_TEST_COLLECTOR_TIMEOUT:-30}"
 BASE_PATH="${BUILDKITE_PLUGIN_TEST_COLLECTOR_BASE_PATH:-.}"
 DEBUG="false"
+MESSAGE="${BUILDKITE_PLUGIN_TEST_COLLECTOR_MESSAGE:-$BUILDKITE_MESSAGE55}"
 
 if [[ "${BUILDKITE_PLUGIN_TEST_COLLECTOR_DEBUG:-}" =~ ^(true|on|1|always)$ ]]; then
   DEBUG="true"
@@ -62,7 +63,7 @@ upload() {
     "--form" "run_env[commit_sha]=$BUILDKITE_COMMIT"
     "--form" "run_env[number]=$BUILDKITE_BUILD_NUMBER"
     "--form" "run_env[job_id]=$BUILDKITE_JOB_ID"
-    "--form" "run_env[message]=$BUILDKITE_MESSAGE"
+    "--form" "run_env[message]=$MESSAGE"
     "--form" "run_env[collector]=test-collector-buildkite-plugin"
   )
 
