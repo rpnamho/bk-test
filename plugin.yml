@@ -5,6 +5,8 @@ requirements:
   - curl
 configuration:
   properties:
+    message:
+      type: string
     api-token-env-name:
       type: string
     api-url:
