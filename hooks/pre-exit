@@ -8,9 +8,6 @@ BASE_PATH="${BUILDKITE_PLUGIN_TEST_COLLECTOR_BASE_PATH:-.}"
 DEBUG="false"
 MESSAGE="${BUILDKITE_PLUGIN_TEST_COLLECTOR_MESSAGE:-$BUILDKITE_MESSAGE}"
 
-echo "MESSAGE HERE"
-echo "${MESSAGE}"
-
 if [[ "${BUILDKITE_PLUGIN_TEST_COLLECTOR_DEBUG:-}" =~ ^(true|on|1|always)$ ]]; then
   DEBUG="true"
 elif [[ "${BUILDKITE_ANALYTICS_DEBUG_ENABLED:-}" =~ ^(true|on|1|always)$ ]]; then
@@ -66,7 +63,7 @@ upload() {
     "--form" "run_env[commit_sha]=$BUILDKITE_COMMIT"
     "--form" "run_env[number]=$BUILDKITE_BUILD_NUMBER"
     "--form" "run_env[job_id]=$BUILDKITE_JOB_ID"
-    "--form" "run_env[message]=HARDCODED"
+    "--form" "run_env[message]=$MESSAGE"
     "--form" "run_env[collector]=test-collector-buildkite-plugin"
   )
 
